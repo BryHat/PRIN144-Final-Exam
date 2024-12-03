@@ -123,6 +123,43 @@ app.delete("/employees/:id", async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  const html = `
+      <!DOCTYPE html>
+      <html>
+          <head>
+              <style>
+                  body {
+                      font-family: Arial, sans-serif;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      height: 100vh;
+                      margin: 0;
+                      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+                  }
+                  .container {
+                      background: white;
+                      padding: 2rem 4rem;
+                      border-radius: 10px;
+                      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                  }
+                  h1 {
+                      color: #333;
+                      text-align: center;
+                  }
+              </style>
+          </head>
+          <body>
+              <div class="container">
+                  <h1>PRIN144-Final-Exam: Bryan Dela Cruz</h1>
+              </div>
+          </body>
+      </html>
+  `;
+  res.send(html);
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`);
