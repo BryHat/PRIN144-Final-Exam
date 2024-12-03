@@ -17,17 +17,14 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, {
 
 const bodyParser = require("body-parser");
 const { Pool } = require("pg");
+require('dotenv').config()
 
 const PORT = 3000;
 
 // PostgreSQL connection setup
 const pool = new Pool({
-  user: "your_pg_user",
-  host: "localhost",
-  database: "your_database_name",
-  password: "your_pg_password",
-  port: 5432,
-});
+  connectionString: "postgres://default:DCw12ZImBzfx@ep-flat-hill-a4bjhxpn-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require",
+})
 
 // Middleware
 app.use(bodyParser.json());
