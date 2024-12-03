@@ -136,17 +136,24 @@ app.get('/', (req, res) => {
                   margin: 0;
                   padding: 0;
                   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                  background: linear-gradient(45deg, #141e30, #243b55);
                   color: #fff;
+                  height: 100vh;
+                  overflow: hidden;
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  height: 100vh;
-                  overflow: hidden;
+                  background: linear-gradient(45deg, #141e30, #243b55);
+                  background-size: 400% 400%;
+                  animation: gradientBackground 10s ease infinite;
+              }
+              @keyframes gradientBackground {
+                  0% { background-position: 0% 50%; }
+                  50% { background-position: 100% 50%; }
+                  100% { background-position: 0% 50%; }
               }
               .container {
                   text-align: center;
-                  background: #fff;
+                  background: rgba(255, 255, 255, 0.9);
                   color: #333;
                   padding: 2rem;
                   border-radius: 15px;
@@ -156,16 +163,6 @@ app.get('/', (req, res) => {
                   position: relative;
                   border: 6px solid transparent;
                   animation: glowing 2s infinite;
-              }
-              h1 {
-                  margin: 0;
-                  font-size: 1.8rem;
-                  font-weight: bold;
-              }
-              p {
-                  margin-top: 0.5rem;
-                  font-size: 1rem;
-                  color: #555;
               }
               @keyframes glowing {
                   0% {
@@ -189,6 +186,16 @@ app.get('/', (req, res) => {
                       box-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d;
                   }
               }
+              h1 {
+                  margin: 0;
+                  font-size: 1.8rem;
+                  font-weight: bold;
+              }
+              p {
+                  margin-top: 0.5rem;
+                  font-size: 1rem;
+                  color: #555;
+              }
               @media (max-width: 768px) {
                   h1 {
                       font-size: 1.5rem;
@@ -209,6 +216,7 @@ app.get('/', (req, res) => {
   `;
   res.send(html);
 });
+
 
 // Start the server
 app.listen(PORT, () => {
