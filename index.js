@@ -26,6 +26,14 @@ const pool = new Pool({
   connectionString: "postgres://default:DCw12ZImBzfx@ep-flat-hill-a4bjhxpn-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require?sslmode=require",
 })
 
+pool.connect((err) => {
+  if (err) {
+    console.error("Failed to connect to the database:", err.message);
+  } else {
+    console.log("Database connection successful!");
+  }
+});
+
 // Middleware
 app.use(bodyParser.json());
 
