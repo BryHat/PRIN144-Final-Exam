@@ -136,12 +136,13 @@ app.get('/', (req, res) => {
                   margin: 0;
                   padding: 0;
                   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                  background: linear-gradient(45deg, #6a11cb, #2575fc);
+                  background: linear-gradient(45deg, #141e30, #243b55);
                   color: #fff;
                   display: flex;
                   justify-content: center;
                   align-items: center;
                   height: 100vh;
+                  overflow: hidden;
               }
               .container {
                   text-align: center;
@@ -152,6 +153,9 @@ app.get('/', (req, res) => {
                   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
                   max-width: 500px;
                   width: 90%;
+                  position: relative;
+                  border: 6px solid transparent;
+                  animation: glowing 2s infinite;
               }
               h1 {
                   margin: 0;
@@ -162,6 +166,28 @@ app.get('/', (req, res) => {
                   margin-top: 0.5rem;
                   font-size: 1rem;
                   color: #555;
+              }
+              @keyframes glowing {
+                  0% {
+                      border-color: #ff4d4d;
+                      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d;
+                  }
+                  25% {
+                      border-color: #4d94ff;
+                      box-shadow: 0 0 10px #4d94ff, 0 0 20px #4d94ff, 0 0 30px #4d94ff;
+                  }
+                  50% {
+                      border-color: #47ff4d;
+                      box-shadow: 0 0 10px #47ff4d, 0 0 20px #47ff4d, 0 0 30px #47ff4d;
+                  }
+                  75% {
+                      border-color: #ffa64d;
+                      box-shadow: 0 0 10px #ffa64d, 0 0 20px #ffa64d, 0 0 30px #ffa64d;
+                  }
+                  100% {
+                      border-color: #ff4d4d;
+                      box-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d;
+                  }
               }
               @media (max-width: 768px) {
                   h1 {
@@ -183,7 +209,6 @@ app.get('/', (req, res) => {
   `;
   res.send(html);
 });
-
 
 // Start the server
 app.listen(PORT, () => {
