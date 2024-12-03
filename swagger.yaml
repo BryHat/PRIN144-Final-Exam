@@ -1,0 +1,171 @@
+openapi: 3.0.1
+info:
+  title: PRIN144-Final-Exam
+  version: '1.0'
+  description: Employee Trcker API
+  contact:
+    name: Bryan Dela Cruz
+    email: delacruz2130195@mls.ceu.edu.ph
+externalDocs:
+  url: swagger.json
+  description: swagger.json
+servers:
+  - url: prin-144-final-exam-theta.vercel.app
+    variables: {}
+    description: Production
+paths:
+  /employees:
+    get:
+      summary: Returns all employees
+      description: Returns all employees or a specific employee by ID query parameter
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EmployeeResponse'
+        '404':
+          description: Employee not found
+      tags:
+        - Employees
+    post:
+      summary: Creates a new employee
+      description: Creates a new employee record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeCreateRequest'
+      responses:
+        '201':
+          description: Employee created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+      tags:
+        - Employees
+
+  /employees/{id}:
+    get:
+      summary: Returns an employee by ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeResponse'
+        '404':
+          description: Employee not found
+      tags:
+        - Employees
+    
+    put:
+      summary: Updates an employee
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeUpdateRequest'
+      responses:
+        '200':
+          description: Employee updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmployeeResponse'
+        '404':
+          description: Employee not found
+      tags:
+        - Employees
+
+    delete:
+      summary: Deletes an employee
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Employee deleted successfully
+        '404':
+          description: Employee not found
+      tags:
+        - Employees
+
+components:
+  schemas:
+    EmployeeCreateRequest:
+      type: object
+      required:
+        - first_name
+        - last_name
+        - position
+        - department
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        position:
+          type: string
+        department:
+          type: string
+          enum: ['IT', 'HR', 'Finance', 'Marketing', 'Operations']
+        is_working_from_home:
+          type: boolean
+          default: false
+
+    EmployeeUpdateRequest:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        position:
+          type: string
+        department:
+          type: string
+          enum: ['IT', 'HR', 'Finance', 'Marketing', 'Operations']
+        is_working_from_home:
+          type: boolean
+
+    EmployeeResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        position:
+          type: string
+        department:
+          type: string
+        is_working_from_home:
+          type: boolean
