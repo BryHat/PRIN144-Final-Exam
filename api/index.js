@@ -126,39 +126,64 @@ app.delete("/employees/:id", async (req, res) => {
 app.get('/', (req, res) => {
   const html = `
       <!DOCTYPE html>
-      <html>
-          <head>
-              <style>
-                  body {
-                      font-family: Arial, sans-serif;
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      height: 100vh;
-                      margin: 0;
-                      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-                  }
-                  .container {
-                      background: white;
-                      padding: 2rem 4rem;
-                      border-radius: 10px;
-                      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                  }
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>PRIN144-Final-Exam</title>
+          <style>
+              body {
+                  margin: 0;
+                  padding: 0;
+                  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                  background: linear-gradient(45deg, #6a11cb, #2575fc);
+                  color: #fff;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 100vh;
+              }
+              .container {
+                  text-align: center;
+                  background: #fff;
+                  color: #333;
+                  padding: 2rem;
+                  border-radius: 15px;
+                  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+                  max-width: 500px;
+                  width: 90%;
+              }
+              h1 {
+                  margin: 0;
+                  font-size: 1.8rem;
+                  font-weight: bold;
+              }
+              p {
+                  margin-top: 0.5rem;
+                  font-size: 1rem;
+                  color: #555;
+              }
+              @media (max-width: 768px) {
                   h1 {
-                      color: #333;
-                      text-align: center;
+                      font-size: 1.5rem;
                   }
-              </style>
-          </head>
-          <body>
-              <div class="container">
-                  <h1>PRIN144-Final-Exam: Bryan Dela Cruz</h1>
-              </div>
-          </body>
+                  p {
+                      font-size: 0.9rem;
+                  }
+              }
+          </style>
+      </head>
+      <body>
+          <div class="container">
+              <h1>PRIN144-Final-Exam</h1>
+              <p>Created by Bryan Dela Cruz</p>
+          </div>
+      </body>
       </html>
   `;
   res.send(html);
 });
+
 
 // Start the server
 app.listen(PORT, () => {
