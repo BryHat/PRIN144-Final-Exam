@@ -40,7 +40,7 @@ app.use(bodyParser.json());
 // Routes
 
 // Get All Employees
-app.get("/api/employees", async (req, res) => {
+app.get("/employees", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM employees");
     res.status(200).json(result.rows);
@@ -50,7 +50,7 @@ app.get("/api/employees", async (req, res) => {
 });
 
 // Get Specific Employee by ID
-app.get("/api/employees/:id", async (req, res) => {
+app.get("/employees/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const result = await pool.query("SELECT * FROM employees WHERE id = $1", [id]);
@@ -83,7 +83,7 @@ app.post("/employees", async (req, res) => {
 });
 
 // Update an Employee
-app.put("/api/employees/:id", async (req, res) => {
+app.put("/employees/:id", async (req, res) => {
   const { id } = req.params;
   const { first_name, last_name, position, department, is_working_from_home } = req.body;
 
@@ -108,7 +108,7 @@ app.put("/api/employees/:id", async (req, res) => {
 });
 
 // Delete an Employee
-app.delete("/api/employees/:id", async (req, res) => {
+app.delete("/employees/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
