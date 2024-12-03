@@ -117,7 +117,7 @@ app.delete("/api/employees/:id", async (req, res) => {
       return res.status(404).json({ error: "Employee not found" });
     }
 
-    res.status(204).send(); // No Content
+    res.status(204).send('Good'); // No Content
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
