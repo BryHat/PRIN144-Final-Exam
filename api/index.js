@@ -64,7 +64,7 @@ app.get("/api/employees/:id", async (req, res) => {
 });
 
 // Create a New Employee
-app.post("/api/employees", async (req, res) => {
+app.post("/employees", async (req, res) => {
   const { first_name, last_name, position, department, is_working_from_home } = req.body;
 
   if (!first_name || !last_name || !position || !department || is_working_from_home === undefined) {
