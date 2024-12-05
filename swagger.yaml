@@ -10,7 +10,7 @@ externalDocs:
   url: swagger.json
   description: swagger.json
 servers:
-  - url: prin-144-final-exam-theta.vercel.app
+  - url: https://prin-144-final-exam-theta.vercel.app
     variables: {}
     description: Production
 paths:
